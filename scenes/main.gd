@@ -3,8 +3,8 @@ extends Node2D
 var player_points = 0
 var enemy_points = 0
 
-@onready var enemy_paddle = $EnemyPaddle
-@onready var player_paddle = $Paddle
+@onready var enemy_paddle = $Enemy
+@onready var player_paddle = $Player
 @onready var ball = $Ball
 @onready var UI = $UI
 

@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbbccl0wfdi6g"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_nnkd3"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nnkd3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -33.0
+offset_right = 52.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="OnePlayer" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Один Игрок"
+
+[node name="TwoPlayers" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Два Игрока"
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OnePlayer" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TwoPlayers" to="." method="_on_two_players_pressed"]
