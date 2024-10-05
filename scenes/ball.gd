@@ -22,5 +22,5 @@ func _physics_process(delta):
 
 func start_ball():
 	await get_tree().create_timer(1).timeout
-	velocity.x = [-1, 1][randi() % 2] * BALL_SPEED
-	velocity.y = [-.8, .8][randi() % 2] * BALL_SPEED
+	velocity.x = [-1, 1][randi() % 2] * BALL_SPEED + randf()*.2*BALL_SPEED
+	velocity.y = [-.8, .8][randi() % 2] * BALL_SPEED + randf()*.2*BALL_SPEED
