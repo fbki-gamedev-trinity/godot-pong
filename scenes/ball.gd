@@ -14,6 +14,8 @@ func _ready():
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * ball_speed * delta)
 	
+	linear_velocity = Vector2.ZERO
+	
 	if(collision):
 		velocity =  velocity.bounce(collision.get_normal()) * 1.02
 		
