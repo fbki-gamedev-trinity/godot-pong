@@ -14,11 +14,13 @@ func _ready():
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * ball_speed * delta)
 	
+	linear_velocity = Vector2.ZERO
+	
 	if(collision):
 		velocity =  velocity.bounce(collision.get_normal()) * 1.02
 		
 
 func start_ball():
-	randomize()
-	velocity.x = [-1, 1][randi() % 2] * BALL_SPEED
-	velocity.y = [-.8, .8][randi() % 2] * BALL_SPEED
+	await get_tree().create_timer(1).timeout
+	velocity.x = [-1, 1][randi() % 2] * BALL_SPEED + randf()*.2*BALL_SPEED
+	velocity.y = [-.8, .8][randi() % 2] * BALL_SPEED + randf()*.2*BALL_SPEED
