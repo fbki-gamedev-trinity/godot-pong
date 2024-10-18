@@ -28,24 +28,30 @@ func _physics_process(delta):
 		var other = collision.get_collider()
 		var normal = collision.get_normal()
 		
+		velocity = velocity.bounce(normal) * 1.02
+		
 		if normal in [Vector2.LEFT, Vector2.RIGHT]:
 			# -0.5 врезался в верхний угол
 			# +0.5 врезался в нижний угол
 			var cornerness = (position.y - other.position.y)/other.get_height()
 			
+			# На самом деле может получится больше
+			# Привести принудительно к ±0.5
+			cornerness = clamp(cornerness, -0.5, +0.5)
+			
 			# У игрока другой frame of reference для углов
 			if other == $"../Player":
 				cornerness = -cornerness
 			
-			normal = normal.rotated(cornerness)
-		
-		velocity = velocity.bounce(normal) * 1.02
+			# Важно, чтобы максимальный угол в constrain_deflection()
+			# и здесь в сумме не превышали 90 градусов иначе баги
+			velocity = velocity.rotated(2*cornerness*30*PI/180)
 	
-	velocity = constrain_angle(velocity)
+	velocity = constrain_deflection(velocity)
 
-# Ограничить угол шарика
-# max_angle указывается в радианах от центра
-func constrain_angle(vec: Vector2):
+# Ограничить угол отклонения от горизонтального полёта
+# max_angle указывается в радианах
+func constrain_deflection(vec: Vector2):
 	var max_angle = 60*PI/180 # Разрешить ±60 градусов
 	var angle = 0.0
 	
