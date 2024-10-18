@@ -8,13 +8,12 @@ var enemy_points = 0
 @onready var ball = $Ball
 @onready var UI = $UI
 
-func _on_player_scored() -> void:
+func player_scored() -> void:
 	player_points += 1
 	UI.update_player_point(player_points)
 	reset_game_state()
 
-
-func _on_enemy_scored() -> void:
+func enemy_scored() -> void:
 	enemy_points += 1
 	UI.update_enemy_points(enemy_points)
 	reset_game_state()
