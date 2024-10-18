@@ -28,7 +28,7 @@ func _physics_process(delta):
 		var other = collision.get_collider()
 		var normal = collision.get_normal()
 		
-		if other in [$"../Player", $"../Enemy"]:
+		if normal in [Vector2.LEFT, Vector2.RIGHT]:
 			# -0.5 врезался в верхний угол
 			# +0.5 врезался в нижний угол
 			var cornerness = (position.y - other.position.y)/other.get_height()
@@ -38,9 +38,29 @@ func _physics_process(delta):
 				cornerness = -cornerness
 			
 			normal = normal.rotated(cornerness)
-			
-		velocity = velocity.bounce(normal) * 1.02
 		
+		velocity = velocity.bounce(normal) * 1.02
+	
+	velocity = constrain_angle(velocity)
+
+# Ограничить угол шарика
+# max_angle указывается в радианах от центра
+func constrain_angle(vec: Vector2):
+	var max_angle = 60*PI/180 # Разрешить ±60 градусов
+	var angle = 0.0
+	
+	if velocity.x > 0:
+		angle = vec.angle_to(Vector2.RIGHT)
+	else:
+		angle = vec.angle_to(Vector2.LEFT)
+		
+	var sgn = sign(angle)
+	
+	if abs(angle) > max_angle:
+		var correction = abs(angle) - max_angle
+		vec = vec.rotated(sgn*correction)
+		
+	return vec
 
 func start_ball():
 	await get_tree().create_timer(1).timeout
