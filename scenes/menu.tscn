@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbbccl0wfdi6g"]
+[gd_scene load_steps=3 format=3 uid="uid://dbbccl0wfdi6g"]
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_nnkd3"]
+
+[sub_resource type="Theme" id="Theme_0n7jm"]
+default_font_size = 60
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -29,6 +32,12 @@ grow_vertical = 2
 layout_mode = 2
 metadata/_edit_lock_ = true
 
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_0n7jm")
+text = "minPONG"
+horizontal_alignment = 1
+
 [node name="OnePlayer" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Один Игрок"
@@ -37,6 +46,19 @@ text = "Один Игрок"
 layout_mode = 2
 text = "Два Игрока"
 metadata/_edit_lock_ = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PlayUntilLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Играть до:"
+
+[node name="PlayUntil" type="SpinBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+value = 15.0
+suffix = "очков"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/OnePlayer" to="." method="_on_one_player_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TwoPlayers" to="." method="_on_two_players_pressed"]
