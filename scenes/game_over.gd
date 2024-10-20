@@ -1,5 +1,7 @@
 extends Control
 
+# Для этой сцены включен всегда активный режим
+# так что можно выставлять .paused = true
 func game_over_show(text):
 	get_tree().paused = true
 	$VBoxContainer/Label.text = text
