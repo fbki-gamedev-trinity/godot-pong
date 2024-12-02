@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbbccl0wfdi6g"]
+[gd_scene load_steps=4 format=3 uid="uid://dbbccl0wfdi6g"]
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_nnkd3"]
+[ext_resource type="Texture2D" uid="uid://cukycb1qyq1r5" path="res://assets/background-menu.png" id="2_r7xam"]
 
 [sub_resource type="Theme" id="Theme_0n7jm"]
 default_font_size = 60
@@ -13,6 +14,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nnkd3")
+
+[node name="Background-menu" type="Sprite2D" parent="."]
+position = Vector2(576.778, 324.25)
+scale = Vector2(0.399691, 0.399691)
+texture = ExtResource("2_r7xam")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -35,7 +41,8 @@ metadata/_edit_lock_ = true
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_0n7jm")
-text = "minPONG"
+text = "DEAD PONG
+"
 horizontal_alignment = 1
 
 [node name="OnePlayer" type="Button" parent="MarginContainer/VBoxContainer"]

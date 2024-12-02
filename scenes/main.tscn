@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvjb5xqbwlo5c"]
+[gd_scene load_steps=10 format=3 uid="uid://cvjb5xqbwlo5c"]
 
 [ext_resource type="PackedScene" uid="uid://dc6f0bc1lvvrt" path="res://scenes/wall.tscn" id="1_q3dbu"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uxttm"]
@@ -7,12 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://bonw482gnydfq" path="res://scenes/ball.tscn" id="4_ws6h4"]
 [ext_resource type="Script" path="res://scenes/play_area.gd" id="7_2ex7q"]
 [ext_resource type="PackedScene" uid="uid://80gyva0mkg7q" path="res://scenes/ui.tscn" id="7_u2od2"]
+[ext_resource type="Texture2D" uid="uid://mj66f8f2sqfw" path="res://assets/background-play.png" id="8_mqfoh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cr467"]
 size = Vector2(2300, 1250)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_uxttm")
+
+[node name="Background-play" type="Sprite2D" parent="."]
+texture = ExtResource("8_mqfoh")
 
 [node name="PlayArea" type="Area2D" parent="."]
 script = ExtResource("7_2ex7q")
